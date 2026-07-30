@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="STEELLIFE Co., Ltd. - Korea's leading specialist in 3D cladding systems, metal roofing, and building facades since 2001.">
+    <meta name="keywords"
+        content="3D cladding Korea, building facade specialist, metal roofing, parametric architecture, DDP, aluminum panels">
+    <meta name="author" content="STEELLIFE Co., Ltd.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="STEELLIFE - 3D Cladding Excellence">
+    <meta property="og:description"
+        content="Korea's leading specialist in 3D cladding systems, metal roofing, and building facades since 2001.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://steellife.co.kr">
+
+    <title>STEELLIFE - 3D Cladding Excellence</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="heatherwick-style.css">
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-logo">STEELLIFE</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor">
+        <span>View</span>
+    </div>
+
+    <!-- Project Detail Modal (Gallery) -->
+    <div class="project-modal" id="projectModal">
+        <button class="modal-close" id="modalClose">×</button>
+
+        <!-- Gallery Navigation -->
+        <button class="gallery-nav gallery-prev" id="galleryPrev">‹</button>
+        <button class="gallery-nav gallery-next" id="galleryNext">›</button>
+
+        <div class="modal-content">
+            <!-- Gallery Container -->
+            <div class="gallery-container" id="galleryContainer">
+                <!-- Media items will be inserted here dynamically -->
+            </div>
+
+            <!-- Gallery Dots -->
+            <div class="gallery-dots" id="galleryDots"></div>
+
+            <div class="modal-info">
+                <h2 id="modalTitle"></h2>
+                <p id="modalLocation"></p>
+
+                <!-- Tab Buttons -->
+                <div class="modal-tabs">
+                    <button class="modal-tab active" data-tab="description">DESCRIPTION</button>
+                    <button class="modal-tab" data-tab="details">DETAILS</button>
+                </div>
+
+                <!-- Description Tab Content -->
+                <div class="modal-tab-content active" id="tabDescription">
+                    <p class="modal-description" id="modalDescription"></p>
+                </div>
+
+                <!-- Details Tab Content -->
+                <div class="modal-tab-content" id="tabDetails">
+                    <div class="details-grid" id="detailsGrid">
+                        <!-- Details will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="logo">STEELLIFE</a>
+
+        <nav class="nav-links">
+            <a href="#" class="nav-link active" data-category="projects">Projects</a>
+            <a href="#" class="nav-link" data-category="company">Company</a>
+        </nav>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Category Filter Bar -->
+    <div class="category-bar">
+        <button class="category-btn active" data-filter="all">All</button>
+        <button class="category-btn" data-filter="aviation">Aviation / Transportation</button>
+        <button class="category-btn" data-filter="exhibition">Exhibition / Cultural</button>
+        <button class="category-btn" data-filter="sports">Sports</button>
+        <button class="category-btn" data-filter="education">Education / Science & Technology</button>
+        <button class="category-btn" data-filter="office">Office / Headquarters</button>
+
+        <!-- Drag & Drop Order Toggle Button inside Category Bar -->
+        <button class="reorder-toggle-btn" id="toggleReorderBtn">
+            <span class="icon">⠿</span>
+            <span class="text">사진 순서 변경 (Drag & Drop)</span>
+        </button>
+    </div>
+
+    <!-- Drag & Drop Actions Sub-bar (shows when active) -->
+    <div class="reorder-actions-bar hidden" id="reorderActions">
+        <button class="action-btn save-btn" id="saveOrderBtn">💾 순서 저장</button>
+        <button class="action-btn reset-btn" id="resetOrderBtn">↺ 순서 초기화</button>
+        <button class="action-btn export-btn" id="exportOrderBtn">📋 내보내기</button>
+        <span class="reorder-hint">💡 사진을 드래그하거나, 클릭 후 이동할 위치의 사진을 클릭하여 순서를 쉽게 변경할 수 있습니다.</span>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-notification" id="toastNotification"></div>
+
+    <!-- Hero Video Section -->
+    <section class="hero-section">
+        <!-- Intro Overlay (STEELLIFE text that fades out) -->
+        <div class="intro-overlay" id="introOverlay">
+            <div class="intro-text">STEELLIFE</div>
+        </div>
+
+        <div class="video-container left">
+            <video id="heroVideoLeft" class="hero-video" autoplay muted loop playsinline></video>
+            <div class="video-label">Projects</div>
+        </div>
+        <div class="video-container right">
+            <video id="heroVideoRight" class="hero-video" autoplay muted loop playsinline></video>
+            <div class="video-label">Company</div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Fullscreen Project Grid (dynamically rendered by JS) -->
+    <main class="project-grid" id="projectGrid">
+        <!-- Project items are dynamically generated from heatherwick-script.js -->
+    </main>
+
+    <!-- Fullscreen Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay">
+        <div class="nav-overlay-content">
+            <div class="nav-section">
+                <h3>PROJECTS</h3>
+                <ul>
+                    <li><a href="#" data-filter="aviation">Aviation / Transportation</a></li>
+                    <li><a href="#" data-filter="exhibition">Exhibition / Cultural</a></li>
+                    <li><a href="#" data-filter="sports">Sports</a></li>
+                    <li><a href="#" data-filter="education">Education / Science & Technology</a></li>
+                    <li><a href="#" data-filter="office">Office / Headquarters</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>COMPANY / ABOUT</h3>
+                <ul>
+                    <li><a href="#" data-category="company" data-company-tab="company">COMPANY (기업 개요)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="people">PEOPLE (임직원 &amp; 팀)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="careers">CAREERS (채용)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="press">PRESS (보도자료)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="news">NEWS (기업 소식)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="award">AWARD (수상 및 인증)</a></li>
+                    <li><a href="#" data-category="company" data-company-tab="building">BUILDING (사옥 안내)</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-section nav-contact">
+                <h3>CONTACT</h3>
+                <p>10009 경기도 김포시 통진읍 고정1로 73</p>
+                <p>TEL <a href="tel:+8228551405">02-855-1405</a></p>
+                <p>FAX 02-855-1406</p>
+                <p>MAIL <a href="mailto:steelbu@steellife.net">steelbu@steellife.net</a></p>
+            </div>
+        </div>
+        <button class="nav-close" id="navClose">CLOSE</button>
+    </div>
+
+    <!-- Studio / Company Page Content (Heatherwick Studio Style) -->
+    <section class="studio-section" id="studioSection">
+        <div class="studio-content">
+            
+            <!-- Heatherwick-style Sub-navigation Header -->
+            <nav class="hw-subnav-bar">
+                <ul class="hw-subnav-list">
+                    <li><button class="hw-subnav-btn active" data-company-tab="company">About</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="people">People</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="careers">Careers</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="press">Press</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="news">News</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="award">Award</button></li>
+                    <li><button class="hw-subnav-btn" data-company-tab="building">Building</button></li>
+                </ul>
+            </nav>
+
+            <!-- TAB 1: COMPANY (HEATHERWICK STUDIO ABOUT PAGE LAYOUT) -->
+            <div class="company-tab-panel active" id="companyPanelCompany">
+                
+                <!-- Editorial Hero Collage Section -->
+                <div class="hw-editorial-hero">
+                    <div class="hw-hero-left-col">
+                        <div class="hw-image-wrapper">
+                            <img src="images/2_ExhibitionCultural/1_DDP/main.png" alt="STEELLIFE DDP Project" class="hw-editorial-img">
+                        </div>
+                    </div>
+                    <div class="hw-hero-right-col">
+                        <div class="hw-hero-statement">
+                            <h2 class="hw-jumbo-text">We are a team of problem solvers dedicated to making the physical architectural world around us more radical and inspiring.</h2>
+                            <p class="hw-lead-p">Based out of our engineering labs and smart manufacturing facilities in Korea, we engineer and craft 3D cladding systems, metal roofing, and bespoke architectural facades that push the boundaries of spatial design.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hw-editorial-secondary">
+                    <div class="hw-secondary-left">
+                        <div class="hw-secondary-statement">
+                            <h3 class="hw-h3-statement">We want to see a world where buildings and facades are radically more joyful, engaging and human.</h3>
+                            <p class="hw-body-p">Our team of engineers, 3D modelers, craftsmen, metal artisans and facade specialists share a single motivation: to realize soulful and impactful structures that celebrate the complexities of real-world architecture. Our driving approach leads from human experience and craftsmanship rather than fixed beliefs.</p>
+                        </div>
+                    </div>
+                    <div class="hw-secondary-right">
+                        <div class="hw-image-wrapper">
+                            <img src="images/1_AviationTransportation/2_인천공항2터미널/main.png" alt="STEELLIFE Incheon Airport T2" class="hw-editorial-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Showcase Section (Matching Heatherwick about_us_0507-720p.mp4) -->
+                <div class="hw-video-section">
+                    <div class="hw-video-container">
+                        <video id="companyShowcaseVideo" controls playsinline poster="images/2_ExhibitionCultural/5_전곡선사박물관/main.jpeg">
+                            <source src="videos/company/steellife/steellife (1).mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- 3 Philosophy Columns Section (Matching Heatherwick 3 Pillars) -->
+                <div class="hw-philosophy-section">
+                    <div class="hw-philosophy-grid">
+                        <div class="hw-philosophy-col">
+                            <h4 class="hw-pillar-title">WE ARE PRACTICAL INVENTORS</h4>
+                            <p class="hw-pillar-desc">We start each facade and roof project from scratch, putting aside any preconceived limitations. By asking relentless questions, we uncover the true structural possibilities at the heart of every design.</p>
+                        </div>
+                        <div class="hw-philosophy-col">
+                            <h4 class="hw-pillar-title">WE ARE CRAFTSMEN &amp; MAKERS</h4>
+                            <p class="hw-pillar-desc">Working directly with metal fabricators and parametric engineers is integral to our process. In our dedicated 3D workshop, we constantly prototype multi-curved panels to create materially extraordinary places.</p>
+                        </div>
+                        <div class="hw-philosophy-col">
+                            <h4 class="hw-pillar-title">WE ARE POSITIVE &amp; PRAGMATIC</h4>
+                            <p class="hw-pillar-desc">Our team are active collaborators whose role is to listen and lead. We deliver architectural solutions that combine visionary ingenuity with affordable, buildable and sustainable execution.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hw-line-divider"></div>
+
+                <!-- Founder / CEO Spotlight Section (Matching Heatherwick Thomas Heatherwick section) -->
+                <div class="hw-founder-section">
+                    <div class="hw-founder-header">
+                        <h2 class="hw-founder-title">STEELLIFE Leadership &amp; Heritage</h2>
+                        <p class="hw-founder-subtitle">Founded in July 2001, STEELLIFE was born from a deep passion for metal mastery and parametric architecture.</p>
+                    </div>
+                    <div class="hw-founder-grid">
+                        <div class="hw-founder-text">
+                            <blockquote class="hw-quote">
+                                "Architecture is the art of sculpting city skylines. At STEELLIFE, our relentless pursuit of technical innovation transforms the boldest visions of architects into physical reality without compromise."
+                            </blockquote>
+                            <div class="hw-founder-meta">
+                                <span class="hw-founder-name">STEELLIFE Founder &amp; CEO</span>
+                                <span class="hw-founder-detail">Co-founder of Korea's 3D Parametric Cladding Association</span>
+                            </div>
+                        </div>
+                        <div class="hw-founder-image">
+                            <img src="images/2_ExhibitionCultural/5_전곡선사박물관/main.jpeg" alt="STEELLIFE Craftsmanship" class="hw-editorial-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="hw-stats-bar">
+                    <div class="hw-stat-item">
+                        <span class="hw-stat-num">200+</span>
+                        <span class="hw-stat-lbl">Projects Completed</span>
+                    </div>
+                    <div class="hw-stat-item">
+                        <span class="hw-stat-num">23+</span>
+                        <span class="hw-stat-lbl">Years Experience</span>
+                    </div>
+                    <div class="hw-stat-item">
+                        <span class="hw-stat-num">15+</span>
+                        <span class="hw-stat-lbl">Patents &amp; Certifications</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: PEOPLE (HEATHERWICK PEOPLE PAGE STYLE) -->
+            <div class="company-tab-panel" id="companyPanelPeople">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">Our People &amp; Leadership</h2>
+                    <p class="hw-panel-lead">We are a studio of over 250 problem solvers, 3D parametric engineers, master metal artisans, and project leaders dedicated to shaping spatial excellence.</p>
+                </div>
+
+                <!-- Heatherwick People Hero Grid -->
+                <div class="hw-people-hero">
+                    <div class="hw-people-hero-text">
+                        <h3 class="hw-h3-statement">Good architectural engineering is a team effort. Diversity of technical discipline, material mastery, and creative perspective are valued across STEELLIFE.</h3>
+                        <p class="hw-body-p">Whether developing Rhino/Grasshopper parametric algorithm models for non-standard 3D panels, operating automated cold-forming CNC machinery, or managing site installation on landmark projects, our team works in close collaboration from concept to realization.</p>
+                    </div>
+                </div>
+
+                <!-- People Filter Categories Navigation -->
+                <div class="hw-people-filter-bar">
+                    <button class="hw-people-filter-btn active" data-people-filter="all">All People</button>
+                    <button class="hw-people-filter-btn" data-people-filter="leadership">Leadership &amp; Directors</button>
+                    <button class="hw-people-filter-btn" data-people-filter="engineering">3D Parametric Engineers</button>
+                    <button class="hw-people-filter-btn" data-people-filter="craft">Master Fabricators</button>
+                    <button class="hw-people-filter-btn" data-people-filter="operations">Project Operations</button>
+                </div>
+
+                <!-- People Grid -->
+                <div class="hw-people-grid">
+                    <div class="hw-people-card" data-people-cat="leadership">
+                        <div class="hw-people-thumb">
+                            <img src="images/2_ExhibitionCultural/1_DDP/main.png" alt="Kim Sung-Hwan">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Founder &amp; Managing Director</span>
+                            <h4 class="hw-people-name">Kim Sung-Hwan (김성환)</h4>
+                            <p class="hw-people-bio">Founded STEELLIFE in 2001. Leading Korea's pioneer movement in 3D cladding systems, SSMR roofing, and freeform parametric facades.</p>
+                        </div>
+                    </div>
+
+                    <div class="hw-people-card" data-people-cat="engineering">
+                        <div class="hw-people-thumb">
+                            <img src="images/1_AviationTransportation/2_인천공항2터미널/main.png" alt="Lee Seung-Woo">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Head of 3D Parametric Design Lab</span>
+                            <h4 class="hw-people-name">Lee Seung-Woo (이승우)</h4>
+                            <p class="hw-people-bio">Specialist in Rhino, Grasshopper, and Revit BIM algorithms for complex double-curved aluminum and stainless steel panel systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="hw-people-card" data-people-cat="engineering">
+                        <div class="hw-people-thumb">
+                            <img src="images/2_ExhibitionCultural/5_전곡선사박물관/main.jpeg" alt="Park Hyun-Jun">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Chief Structural Facade Engineer</span>
+                            <h4 class="hw-people-name">Park Hyun-Jun (박현준)</h4>
+                            <p class="hw-people-bio">Expert in wind-load structural analysis, seismic joint design, and thermal performance engineering for large-scale public facilities.</p>
+                        </div>
+                    </div>
+
+                    <div class="hw-people-card" data-people-cat="craft">
+                        <div class="hw-people-thumb">
+                            <img src="images/1_AviationTransportation/4_아부다비미드필드터미널/main.jpeg" alt="Choi Min-Soo">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Master Metal Fabricator &amp; Plant Manager</span>
+                            <h4 class="hw-people-name">Choi Min-Soo (최민수)</h4>
+                            <p class="hw-people-bio">25+ years experience in automated multi-axis CNC cold forming, custom mold control, and sub-millimeter metal panel fabrication.</p>
+                        </div>
+                    </div>
+
+                    <div class="hw-people-card" data-people-cat="leadership">
+                        <div class="hw-people-thumb">
+                            <img src="images/2_ExhibitionCultural/6_여수엑스포주제관/main.png" alt="Jung Yu-Jin">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Director of BIPV &amp; Green Tech Lab</span>
+                            <h4 class="hw-people-name">Jung Yu-Jin (정유진)</h4>
+                            <p class="hw-people-bio">Pioneering building-integrated photovoltaic solar cladding modules and national fire-resistance certification for roofus SERIES.</p>
+                        </div>
+                    </div>
+
+                    <div class="hw-people-card" data-people-cat="operations">
+                        <div class="hw-people-thumb">
+                            <img src="images/1_AviationTransportation/5_판교역알파돔시티링크브릿지/main.jpeg" alt="Han Dong-Wook">
+                        </div>
+                        <div class="hw-people-info">
+                            <span class="hw-people-role">Chief Field Superintendent &amp; Site Operations</span>
+                            <h4 class="hw-people-name">Han Dong-Wook (한동욱)</h4>
+                            <p class="hw-people-bio">Managing site installation, safety compliance, and physical mock-up verification across nationwide &amp; global airport projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: CAREERS -->
+            <div class="company-tab-panel" id="companyPanelCareers">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">Careers at STEELLIFE</h2>
+                    <p class="hw-panel-lead">Join a team of passionate makers, engineers, and visionaries shaping the future of architecture.</p>
+                </div>
+
+                <div class="hw-careers-pillars">
+                    <div class="hw-careers-col">
+                        <div class="hw-pillar-num">01</div>
+                        <h3>Challenge &amp; Innovation</h3>
+                        <p>We embrace complex geometric challenges and pioneer new digital fabrication methods.</p>
+                    </div>
+                    <div class="hw-careers-col">
+                        <div class="hw-pillar-num">02</div>
+                        <h3>Engineering Precision</h3>
+                        <p>We are obsessed with structural details, material tolerance, and uncompromised quality.</p>
+                    </div>
+                    <div class="hw-careers-col">
+                        <div class="hw-pillar-num">03</div>
+                        <h3>Collaborative Synergy</h3>
+                        <p>We value open dialogue between architects, site managers, and fabricators to achieve greatness together.</p>
+                    </div>
+                </div>
+
+                <div class="hw-job-listings">
+                    <h3 class="hw-section-sub">Open Roles</h3>
+                    <div class="hw-job-card">
+                        <div class="hw-job-head">
+                            <span class="hw-job-tag">Engineering &amp; Design</span>
+                            <span class="hw-job-badge">Open</span>
+                        </div>
+                        <h4>3D Parametric &amp; Facade Engineer</h4>
+                        <p>Lead Rhino, Grasshopper, and Revit structural modeling for non-standard 3D exterior panel systems.</p>
+                        <span class="hw-job-loc">Location: HQ Gimpo &amp; Seoul Office | Experience: 3+ Years</span>
+                    </div>
+                    <div class="hw-job-card">
+                        <div class="hw-job-head">
+                            <span class="hw-job-tag">Site Management</span>
+                            <span class="hw-job-badge">Open</span>
+                        </div>
+                        <h4>Metal Roof &amp; Cladding Field Superintendent</h4>
+                        <p>Oversee installation, quality control, and safety compliance for major landmark public projects.</p>
+                        <span class="hw-job-loc">Location: Nationwide Site Operations | Experience: 5+ Years</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: PRESS -->
+            <div class="company-tab-panel" id="companyPanelPress">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">Press &amp; Publications</h2>
+                    <p class="hw-panel-lead">Read how STEELLIFE is featured across international architecture media and engineering journals.</p>
+                </div>
+                <div class="hw-press-grid">
+                    <article class="hw-press-item">
+                        <span class="hw-press-date">May 2024</span>
+                        <span class="hw-press-journal">Korea Architecture Journal</span>
+                        <h3>STEELLIFE Receives Fire-Resistance Certification for BIPV 3D Cladding</h3>
+                        <p>Unveiling next-generation green building cladding integrating BIPV solar technology with multi-curved metal panels.</p>
+                    </article>
+                    <article class="hw-press-item">
+                        <span class="hw-press-date">Nov 2023</span>
+                        <span class="hw-press-journal">MK Architecture Daily</span>
+                        <h3>From DDP to Abu Dhabi Midfield: STEELLIFE Expands Global Facade Footprint</h3>
+                        <p>How Korea's leading cladding specialist is delivering complex freeform metal structures to global airports and cultural centers.</p>
+                    </article>
+                    <article class="hw-press-item">
+                        <span class="hw-press-date">Aug 2022</span>
+                        <span class="hw-press-journal">SPACE Magazine</span>
+                        <h3>[Facade Report] Breaking boundaries in Curved Metal Sheet Molding</h3>
+                        <p>An in-depth study on STEELLIFE's proprietary 3D unit mold processing and parametric CAD/CAM fabrication.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- TAB 4: NEWS -->
+            <div class="company-tab-panel" id="companyPanelNews">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">News &amp; Updates</h2>
+                    <p class="hw-panel-lead">The latest announcements and milestones from STEELLIFE Studio.</p>
+                </div>
+                <div class="hw-news-timeline">
+                    <div class="hw-news-row">
+                        <div class="hw-news-date">Jul 28, 2024</div>
+                        <div class="hw-news-main">
+                            <span class="hw-news-tag tag-notice">Notice</span>
+                            <h3>Release of 2024 3D Cladding &amp; roofus SERIES Specification Catalog</h3>
+                            <p>Updated technical specifications now available for roofus deck, t roof, zip, magic, and bipv lines.</p>
+                        </div>
+                    </div>
+                    <div class="hw-news-row">
+                        <div class="hw-news-date">Apr 15, 2024</div>
+                        <div class="hw-news-main">
+                            <span class="hw-news-tag tag-update">Update</span>
+                            <h3>Expansion of Smart Fabrication Facility No. 2 Completed</h3>
+                            <p>Installation of automated 3D cold-forming machinery increases annual production capacity by 40%.</p>
+                        </div>
+                    </div>
+                    <div class="hw-news-row">
+                        <div class="hw-news-date">Dec 10, 2023</div>
+                        <div class="hw-news-main">
+                            <span class="hw-news-tag tag-award">Award</span>
+                            <h3>Winner of Korea Building Technology Grand Prize for Facade Excellence</h3>
+                            <p>Recognized for outstanding engineering innovation in fire-resistant 3D metal panel systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: AWARD -->
+            <div class="company-tab-panel" id="companyPanelAward">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">Awards &amp; Certifications</h2>
+                    <p class="hw-panel-lead">Verified excellence in technical research, safety standards, and intellectual property.</p>
+                </div>
+                <div class="hw-awards-grid">
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">2023</div>
+                        <h3>Korea Building Tech Grand Award</h3>
+                        <p>Excellence in 3D Cladding and SSMR Roofing Fabrication</p>
+                    </div>
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">MOLIT</div>
+                        <h3>National Fire-Resistance Certification</h3>
+                        <p>Official 30-min and 1-hour fire resistance rating for roofus SERIES</p>
+                    </div>
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">PATENT</div>
+                        <h3>BIPV Solar Integration Technology</h3>
+                        <p>Patented structure for building-integrated photovoltaic cladding</p>
+                    </div>
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">PATENT</div>
+                        <h3>3D Curved Metal Molding Machinery</h3>
+                        <p>Proprietary automated mold control and parametric bending system</p>
+                    </div>
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">ISO</div>
+                        <h3>ISO 9001 / ISO 14001</h3>
+                        <p>International quality &amp; environmental management certification</p>
+                    </div>
+                    <div class="hw-award-card">
+                        <div class="hw-award-year">2021</div>
+                        <h3>Smart Construction Excellence Award</h3>
+                        <p>Recognized for BIM-integrated 3D parametric manufacturing process</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: BUILDING -->
+            <div class="company-tab-panel" id="companyPanelBuilding">
+                <div class="hw-panel-header">
+                    <h2 class="hw-panel-title">Building &amp; Facilities</h2>
+                    <p class="hw-panel-lead">Inside STEELLIFE's Gimpo Headquarters and Smart Manufacturing Complex.</p>
+                </div>
+                <div class="hw-building-showcase">
+                    <div class="hw-building-hero-card">
+                        <h3>Gimpo HQ &amp; Main Manufacturing Complex</h3>
+                        <p class="hw-building-address">73 Gojeong 1-ro, Tongjin-eup, Gimpo-si, Gyeonggi-do, Korea</p>
+                        <div class="hw-building-stats-row">
+                            <div><strong>Site Area:</strong> 12,000 m²</div>
+                            <div><strong>R&amp;D Labs:</strong> 3D Parametric Lab &amp; BIPV Test Field</div>
+                            <div><strong>Machinery:</strong> Multi-axis CNC &amp; Automated Mold Forming</div>
+                        </div>
+                    </div>
+                    <div class="hw-building-grid">
+                        <div class="hw-b-card">
+                            <h4>01. Automated 3D CNC Line</h4>
+                            <p>Sub-millimeter precision fabrication for high-density curved aluminum &amp; stainless panels.</p>
+                        </div>
+                        <div class="hw-b-card">
+                            <h4>02. Full-Scale Mockup Lab</h4>
+                            <p>Physical mock-up assembly testing, wind-load testing, and water-tightness verification.</p>
+                        </div>
+                        <div class="hw-b-card">
+                            <h4>03. Parametric Design Center</h4>
+                            <p>Dedicated digital engineering studio utilizing Rhino, Grasshopper, and Revit BIM workflows.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Factory &amp; Headquarters</h3>
+                    <p>10009 경기도 김포시 통진읍 고정1로 73</p>
+                    <p>TEL <a href="tel:+8228551405">02-855-1405</a></p>
+                    <p>FAX 02-855-1406</p>
+                    <p>MAIL <a href="mailto:steelbu@steellife.net">steelbu@steellife.net</a></p>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="company" placeholder="Company">
+                    <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="footer-logo">STEELLIFE</span>
+            <span class="footer-copyright">© 2024 STEELLIFE Co., Ltd. All Rights Reserved.</span>
+        </div>
+    </footer>
+
+    <script src="heatherwick-script.js"></script>
+
+    <!-- STEELLIFE AI Chatbot Widget -->
+    <style>
+        #chatbotWidget {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 420px;
+            height: 640px;
+            border: none;
+            z-index: 9999;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            #chatbotWidget {
+                width: 360px;
+                height: 560px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            #chatbotWidget {
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    </style>
+    <iframe id="chatbotWidget" src="https://steellife-ai-chat.vercel.app/widget" allow="clipboard-write"></iframe>
+</body>
+
+</html>
