@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ─── 1. Aviation & Transportation (항공/교통) ───
         {
             category: 'aviation',
+            isSignature: true,
             name: '인천공항 제1터미널',
             folder: 'images/1_AviationTransportation/1_인천공항1터미널',
             mainImage: 'main.jpeg',
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'aviation',
+            isSignature: true,
             name: '인천공항 제2터미널',
             folder: 'images/1_AviationTransportation/2_인천공항2터미널',
             mainImage: 'main.png',
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'aviation',
+            isSignature: true,
             name: '아부다비 미드필드 터미널',
             folder: 'images/1_AviationTransportation/4_아부다비미드필드터미널',
             mainImage: 'main.jpeg',
@@ -109,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ─── 2. Exhibition & Cultural (전시/문화) ───
         {
             category: 'exhibition',
+            isSignature: true,
             name: 'DDP 동대문디자인플라자',
             folder: 'images/2_ExhibitionCultural/1_DDP',
             mainImage: 'main.png',
@@ -116,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
+            isSignature: true,
             name: '현대 고양 모터스튜디오',
             folder: 'images/2_ExhibitionCultural/2_현대고양모터스튜디오',
             mainImage: 'main.png',
@@ -137,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
+            isSignature: true,
             name: '전곡선사박물관',
             folder: 'images/2_ExhibitionCultural/5_전곡선사박물관',
             mainImage: 'main.jpeg',
@@ -151,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
+            isSignature: true,
             name: '여수엑스포 주제관',
             folder: 'images/2_ExhibitionCultural/7_여수엑스포주제관',
             mainImage: 'main.png',
@@ -200,6 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
+            isSignature: true,
             name: '필리핀 아레나',
             folder: 'images/2_ExhibitionCultural/14_필리핀아레나',
             mainImage: 'main.png',
@@ -244,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ─── 3. Sports (스포츠) ───
         {
             category: 'sports',
+            isSignature: true,
             name: '잠실 체조경기장',
             folder: 'images/3_Sports/1_잠실체조경기장',
             mainImage: 'main.jpeg',
@@ -351,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'education',
+            isSignature: true,
             name: '코오롱 글로벌센터',
             folder: 'images/4_EducationScienceTechnology/2_코오롱글로벌센터',
             mainImage: 'main.png',
@@ -402,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ─── 5. Office & Headquarters (업무/사옥) ───
         {
             category: 'office',
+            isSignature: true,
             name: 'LH 진주사옥',
             folder: 'images/5_OfficeHeadquarters/1_LH진주사옥',
             mainImage: 'main.png',
@@ -409,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
+            isSignature: true,
             name: 'YG 엔터테인먼트 사옥',
             folder: 'images/5_OfficeHeadquarters/2_YG엔터네인먼트사옥',
             mainImage: 'main.jpeg',
@@ -416,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
+            isSignature: true,
             name: '울릉도 코스모스호텔',
             folder: 'images/5_OfficeHeadquarters/3_울릉도코스모스호텔',
             mainImage: 'main.png',
@@ -451,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
+            isSignature: true,
             name: 'NAVER 세종각',
             folder: 'images/5_OfficeHeadquarters/8_NAVER세종각',
             mainImage: 'main.png',
@@ -495,6 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Category display names
     const categoryNames = {
+        signature: 'Signature Projects',
         aviation: 'Aviation / Transportation',
         exhibition: 'Exhibition / Cultural',
         sports: 'Sports',
@@ -506,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Photo Drag & Drop Reorder State & Logic
     // =====================================================
     const REORDER_STORAGE_KEY = 'steellife_project_order_v1';
+    const SIGNATURE_STORAGE_KEY = 'steellife_signature_list_v1';
     let isReorderModeActive = false;
     let draggedItemIndex = null;
     let selectedForMoveIndex = null;
@@ -538,7 +554,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Restore saved signature list from LocalStorage if available
+    function loadSavedSignatureList() {
+        try {
+            const savedData = localStorage.getItem(SIGNATURE_STORAGE_KEY);
+            if (savedData) {
+                const signatureNames = new Set(JSON.parse(savedData));
+                allProjects.forEach(p => {
+                    p.isSignature = signatureNames.has(p.name);
+                });
+                console.log('Restored signature list from LocalStorage');
+            }
+        } catch (e) {
+            console.error('Failed to load saved signature list:', e);
+        }
+    }
+
+    // Save signature list to LocalStorage
+    function saveSignatureList() {
+        try {
+            const signatureNames = allProjects.filter(p => p.isSignature).map(p => p.name);
+            localStorage.setItem(SIGNATURE_STORAGE_KEY, JSON.stringify(signatureNames));
+        } catch (e) {
+            console.error('Failed to save signature list:', e);
+        }
+    }
+
     loadSavedProjectOrder();
+    loadSavedSignatureList();
 
     // Toast notification helper
     function showToast(message) {
@@ -566,6 +609,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('selected-for-move');
             }
             link.dataset.category = project.category;
+            if (project.isSignature || project.signature) {
+                link.dataset.signature = 'true';
+            }
             link.dataset.index = index;
 
             if (isReorderModeActive) {
@@ -586,6 +632,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             link.appendChild(img);
             link.appendChild(overlay);
+
+            // Signature Toggle Button (star)
+            const sigBtn = document.createElement('button');
+            sigBtn.className = 'signature-toggle-btn' + (project.isSignature ? ' active' : '');
+            sigBtn.title = project.isSignature ? '시그니처에서 제거' : '시그니처에 추가';
+            sigBtn.innerHTML = project.isSignature ? '★' : '☆';
+            
+            sigBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                project.isSignature = !project.isSignature;
+                saveSignatureList();
+
+                const activeCategoryBtn = document.querySelector('.category-btn.active');
+                const currentCategory = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'all';
+
+                if (project.isSignature) {
+                    showToast(`⭐ [${project.name}] 시그니처에 추가되었습니다.`);
+                } else {
+                    showToast(`❌ [${project.name}] 시그니처에서 제외되었습니다.`);
+                }
+
+                renderProjectGrid();
+                filterProjects(currentCategory);
+            });
+
+            link.appendChild(sigBtn);
 
             if (isReorderModeActive) {
                 const badge = document.createElement('div');
@@ -704,6 +778,37 @@ document.addEventListener('DOMContentLoaded', () => {
         projectGrid.querySelectorAll('.project-item').forEach(item => {
             observer.observe(item);
         });
+
+        // Maintain active category filter if set
+        const activeBtn = document.querySelector('.category-btn.active');
+        if (activeBtn && activeBtn.dataset.filter) {
+            const currentCat = activeBtn.dataset.filter;
+            projectGrid.querySelectorAll('.project-item').forEach(item => {
+                const itemCategory = item.dataset.category;
+                const isSignature = item.dataset.signature === 'true';
+                if (currentCat === 'all' || (currentCat === 'signature' && isSignature) || itemCategory === currentCat) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+    }
+
+    // =====================================================
+    // Admin Mode Detection (Shows reorder button only on admin URL)
+    // =====================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const pathname = window.location.pathname.toLowerCase();
+    const hash = window.location.hash.toLowerCase();
+
+    const isAdmin = urlParams.has('admin') || 
+                    urlParams.get('mode') === 'admin' || 
+                    pathname.includes('admin') || 
+                    hash.includes('admin');
+
+    if (isAdmin) {
+        document.body.classList.add('admin-mode');
     }
 
     // Reorder Toolbar Event Listeners
@@ -750,21 +855,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (resetOrderBtn) {
         resetOrderBtn.addEventListener('click', () => {
-            if (confirm('사진 순서를 원본 기본 순서로 초기화하시겠습니까?')) {
+            if (confirm('사진 순서 및 시그니처 설정을 원본 기본 상태로 초기화하시겠습니까?')) {
                 localStorage.removeItem(REORDER_STORAGE_KEY);
+                localStorage.removeItem(SIGNATURE_STORAGE_KEY);
                 allProjects.length = 0;
                 allProjects.push(...defaultProjectsOrder);
+                loadSavedSignatureList();
                 renderProjectGrid();
-                showToast('↺ 사진 순서가 원본으로 초기화되었습니다.');
+                const activeCategoryBtn = document.querySelector('.category-btn.active');
+                const currentCategory = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'signature';
+                filterProjects(currentCategory);
+                showToast('↺ 사진 순서 및 시그니처 목록이 원본으로 초기화되었습니다.');
             }
         });
     }
 
     if (exportOrderBtn) {
         exportOrderBtn.addEventListener('click', () => {
-            const orderList = allProjects.map((p, i) => `${i + 1}. ${p.name} (${p.category})`).join('\n');
+            const orderList = allProjects.map((p, i) => `${i + 1}. ${p.name} [${p.isSignature ? '★ 시그니처' : '일반'}] (${p.category})`).join('\n');
             navigator.clipboard.writeText(orderList).then(() => {
-                showToast('📋 순서 목록이 클립보드에 복사되었습니다!');
+                showToast('📋 순서 및 시그니처 목록이 클립보드에 복사되었습니다!');
             }).catch(() => {
                 alert('순서 목록:\n\n' + orderList);
             });
@@ -1068,7 +1178,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const projectItems = projectGrid.querySelectorAll('.project-item');
         projectItems.forEach(item => {
             const itemCategory = item.dataset.category;
-            if (category === 'all' || itemCategory === category) {
+            const isSignature = item.dataset.signature === 'true';
+            if (category === 'all' || (category === 'signature' && isSignature) || itemCategory === category) {
                 item.classList.remove('hidden');
                 item.style.animation = 'none';
                 item.offsetHeight; // Trigger reflow
@@ -1306,9 +1417,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =====================================================
-    // Initialize: Render project grid
+    // Initialize: Render project grid (default to Signature)
     // =====================================================
     renderProjectGrid();
+    filterProjects('signature');
 
     console.log('STEELLIFE Heatherwick-style site initialized with', allProjects.length, 'projects');
 });
