@@ -1090,21 +1090,45 @@ document.addEventListener('DOMContentLoaded', () => {
         'videos/projects/villakosmos/villakosmos_030.mp4',
         'videos/projects/villakosmos/villakosmos_033.mp4'
     ];
-    const companyVideos = [
-        'videos/company/steellife/steellife (1).mp4',
-        'videos/company/steellife/steellife (2).mp4',
-        'videos/company/steellife/steellife (3).mp4',
-        'videos/company/steellife/steellife (6).mp4',
-        'videos/company/steellife/steellife (7).mp4',
-        'videos/company/steellife/steellife (8).mp4'
-    ];
+
+    const companyVideosByFolder = {
+        arena: [
+            'videos/company/arena/Designer_manipulating_holographi…_202608041040.mp4'
+        ],
+        ddp: [
+            'videos/company/ddp/Designer_modifying_3D_building_mesh_202608041045.mp4'
+        ],
+        hyundai: [
+            'videos/company/hyundai/Designer_working_on_3D_model_202608041215.mp4'
+        ],
+        lh: [
+            'videos/company/lh/Designer_rotating_3D_tower_model_202608041220.mp4'
+        ],
+        soma: [
+            'videos/company/soma/Designer_editing_3D_model_software_202608041232.mp4'
+        ],
+        villakosmos: [
+            'videos/company/villakosmos/Designer_working_on_3D_model_202608041236.mp4'
+        ]
+    };
+
+    function getMatchingCompanyVideo(projectVideoPath) {
+        const parts = projectVideoPath.split('/');
+        const folderName = parts.length >= 3 ? parts[2] : '';
+        const list = companyVideosByFolder[folderName];
+        if (list && list.length > 0) {
+            return list[Math.floor(Math.random() * list.length)];
+        }
+        const allCompanyVideos = Object.values(companyVideosByFolder).flat();
+        return allCompanyVideos[Math.floor(Math.random() * allCompanyVideos.length)];
+    }
 
     function setRandomVideos() {
         if (!heroVideoLeft || !heroVideoRight) return;
         const randomProjectVideo = projectsVideos[Math.floor(Math.random() * projectsVideos.length)];
-        const randomCompanyVideo = companyVideos[Math.floor(Math.random() * companyVideos.length)];
+        const matchingCompanyVideo = getMatchingCompanyVideo(randomProjectVideo);
         heroVideoLeft.src = randomProjectVideo;
-        heroVideoRight.src = randomCompanyVideo;
+        heroVideoRight.src = matchingCompanyVideo;
         heroVideoLeft.play().catch(e => console.log("Auto-play prevented", e));
         heroVideoRight.play().catch(e => console.log("Auto-play prevented", e));
     }
