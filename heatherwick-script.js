@@ -68,13 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
-            name: '현대기아 트레이닝센터',
-            folder: 'images/5_OfficeHeadquarters/9_현대기아트레이닝센터',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
-        },
-        {
-            category: 'office',
             isSignature: true,
             name: '울릉도 코스모스호텔',
             folder: 'images/5_OfficeHeadquarters/3_울릉도코스모스호텔',
@@ -100,48 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'exhibition',
             isSignature: true,
-            name: '대상공원 맘스프리존',
-            folder: 'images/2_ExhibitionCultural/17_대상공원맘스프리존',
-            mainImage: 'main.png',
-            subImages: ['sub (1).png', 'sub (2).png']
-        },
-        {
-            category: 'exhibition',
-            isSignature: true,
             name: '여수엑스포 주제관',
             folder: 'images/2_ExhibitionCultural/7_여수엑스포주제관',
             mainImage: 'main.png',
             subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).jpeg', 'sub (3).png', 'sub (4).jpeg', 'sub (5).jpeg', 'sub (6).jpeg', 'sub (7).jpeg']
-        },
-        {
-            category: 'education',
-            name: '현대 천안 글로벌연수원',
-            folder: 'images/4_EducationScienceTechnology/4_현대천안글로벌연수원',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg']
-        },
-        {
-            category: 'education',
-            name: '한독 제넥신 연구소',
-            folder: 'images/4_EducationScienceTechnology/5_한독제넥신연구소',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg']
-        },
-        {
-            category: 'education',
-            isSignature: true,
-            name: '제주시 새활용센터',
-            folder: 'images/4_EducationScienceTechnology/6_제주시새활용센터',
-            mainImage: 'main.png',
-            subImages: ['sub (1).png']
-        },
-        {
-            category: 'office',
-            isSignature: true,
-            name: '드레곤시티호텔 대연회장',
-            folder: 'images/5_OfficeHeadquarters/6_드레곤시티호텔대연회장',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'aviation',
@@ -161,18 +116,87 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'aviation',
-            name: '몽골공항 NUBIA',
-            folder: 'images/1_AviationTransportation/3_몽골공항NUBIA',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.png']
-        },
-        {
-            category: 'aviation',
             isSignature: true,
             name: '아부다비 미드필드 터미널',
             folder: 'images/1_AviationTransportation/4_아부다비미드필드터미널',
             mainImage: 'main.jpeg',
             subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '송도 컨벤션센터 2단계',
+            folder: 'images/2_ExhibitionCultural/8_송도컨벤션센터2단계',
+            mainImage: 'main.jpeg',
+            subImages: []
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '필리핀 아레나',
+            folder: 'images/2_ExhibitionCultural/14_필리핀아레나',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '대상공원 맘스프리존',
+            folder: 'images/2_ExhibitionCultural/17_대상공원맘스프리존',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).png', 'sub (2).png']
+        },
+        {
+            category: 'sports',
+            isSignature: true,
+            name: 'KNFC',
+            folder: 'images/3_Sports/13_KNFC',
+            mainImage: 'main.jpeg',
+            subImages: []
+        },
+        {
+            category: 'education',
+            isSignature: true,
+            name: '제주시 새활용센터',
+            folder: 'images/4_EducationScienceTechnology/6_제주시새활용센터',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png']
+        },
+        {
+            category: 'office',
+            isSignature: true,
+            name: '드레곤시티호텔 대연회장',
+            folder: 'images/5_OfficeHeadquarters/6_드레곤시티호텔대연회장',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+        },
+        {
+            category: 'office',
+            name: '현대기아 트레이닝센터',
+            folder: 'images/5_OfficeHeadquarters/9_현대기아트레이닝센터',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+        },
+        {
+            category: 'education',
+            name: '현대 천안 글로벌연수원',
+            folder: 'images/4_EducationScienceTechnology/4_현대천안글로벌연수원',
+            mainImage: 'main.jpeg',
+            subImages: ['sub.jpeg']
+        },
+        {
+            category: 'education',
+            name: '한독 제넥신 연구소',
+            folder: 'images/4_EducationScienceTechnology/5_한독제넥신연구소',
+            mainImage: 'main.jpeg',
+            subImages: ['sub.jpeg']
+        },
+        {
+            category: 'aviation',
+            name: '몽골공항 NUBIA',
+            folder: 'images/1_AviationTransportation/3_몽골공항NUBIA',
+            mainImage: 'main.jpeg',
+            subImages: ['sub.png']
         },
         {
             category: 'aviation',
@@ -239,22 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
-            isSignature: true,
-            name: '송도 컨벤션센터 2단계',
-            folder: 'images/2_ExhibitionCultural/8_송도컨벤션센터2단계',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-        {
-            category: 'exhibition',
-            isSignature: true,
-            name: '필리핀 아레나',
-            folder: 'images/2_ExhibitionCultural/14_필리핀아레나',
-            mainImage: 'main.png',
-            subImages: ['sub (1).png', 'sub (2).png']
-        },
-        {
-            category: 'exhibition',
             name: '국립과천과학관',
             folder: 'images/2_ExhibitionCultural/12_국립과천과학관',
             mainImage: 'main.jpeg',
@@ -271,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'exhibition',
             name: '서서울 미술관',
             folder: 'images/2_ExhibitionCultural/19_서서울미술관',
-            mainImage: 'main.png',
+            mainImage: 'main.jpeg',
             subImages: ['sub.png']
         },
         {
@@ -299,14 +307,14 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'exhibition',
             name: '고성 통일전망대',
             folder: 'images/2_ExhibitionCultural/15_고성통일전망대',
-            mainImage: 'main.png',
+            mainImage: 'main.jpeg',
             subImages: ['sub (1).png', 'sub (2).png']
         },
         {
             category: 'exhibition',
             name: '상암 DMC 홍보관',
             folder: 'images/2_ExhibitionCultural/16_상암DMC홍보관',
-            mainImage: 'main.png',
+            mainImage: 'main.jpeg',
             subImages: ['sub (1).png', 'sub (2).png']
         },
         {
@@ -315,14 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
             folder: 'images/2_ExhibitionCultural/18_시흥문화예술회관',
             mainImage: 'main.png',
             subImages: ['sub (1).png', 'sub (2).png']
-        },
-        {
-            category: 'sports',
-            isSignature: true,
-            name: 'KNFC',
-            folder: 'images/3_Sports/13_KNFC',
-            mainImage: 'main.jpeg',
-            subImages: []
         },
         {
             category: 'sports',
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'sports',
             name: '잠실 체육관',
             folder: 'images/3_Sports/2_잠실체육관',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.png',
             subImages: ['sub.jpeg']
         },
         {
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'sports',
             name: '진주 체육관',
             folder: 'images/3_Sports/4_진주체육관',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.png',
             subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
@@ -370,14 +370,14 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'sports',
             name: '김천 실내수영장',
             folder: 'images/3_Sports/8_김천실내수영장',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.jpg',
             subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'sports',
             name: '원주시 국민체육센터',
             folder: 'images/3_Sports/9_원주시국민체육센터',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.png',
             subImages: ['sub.jpeg']
         },
         {
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'sports',
             name: '은평 구민체육센터',
             folder: 'images/3_Sports/7_은평구민체육센터',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.png',
             subImages: ['sub.jpeg']
         },
         {
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'sports',
             name: '레인보우힐스 CC',
             folder: 'images/3_Sports/14_레인보우힐스CC',
-            mainImage: 'main.jpeg',
+            mainImage: 'main.jpg',
             subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'education',
             name: '송도 글로벌캠퍼스',
             folder: 'images/4_EducationScienceTechnology/3_송도글로벌캠퍼스',
-            mainImage: 'main.png',
+            mainImage: 'main.jpeg',
             subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
@@ -514,8 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================================================
     // Photo Drag & Drop Reorder State & Logic
     // =====================================================
-    const REORDER_STORAGE_KEY = 'steellife_project_order_v1';
-    const SIGNATURE_STORAGE_KEY = 'steellife_signature_list_v1';
+    const REORDER_STORAGE_KEY = 'steellife_project_order_v100';
+    const SIGNATURE_STORAGE_KEY = 'steellife_signature_list_v100';
     let isReorderModeActive = false;
     let draggedItemIndex = null;
     let selectedForMoveIndex = null;
