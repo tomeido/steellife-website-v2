@@ -34,7 +34,115 @@ document.addEventListener('DOMContentLoaded', () => {
     // PROJECT DATA - All 64 projects organized by category
     // =====================================================
     const allProjects = [
-        // ─── 1. Aviation & Transportation (항공/교통) ───
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: 'DDP 동대문디자인플라자',
+            folder: 'images/2_ExhibitionCultural/1_DDP',
+            mainImage: 'main.png',
+            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).png', 'sub (3).jpeg', 'sub (5).jpeg', 'sub (6).jpeg', 'sub (7).jpeg', 'sub (8).jpeg', 'sub (9).jpeg', 'sub (10).jpeg', 'sub (11).jpeg', 'sub (12).jpeg', 'sub (13).jpeg']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '현대 고양 모터스튜디오',
+            folder: 'images/2_ExhibitionCultural/2_현대고양모터스튜디오',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
+        },
+        {
+            category: 'office',
+            isSignature: true,
+            name: 'LH 진주사옥',
+            folder: 'images/5_OfficeHeadquarters/1_LH진주사옥',
+            mainImage: 'main.png',
+            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).png']
+        },
+        {
+            category: 'education',
+            isSignature: true,
+            name: '코오롱 글로벌센터',
+            folder: 'images/4_EducationScienceTechnology/2_코오롱글로벌센터',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png']
+        },
+        {
+            category: 'office',
+            name: '현대기아 트레이닝센터',
+            folder: 'images/5_OfficeHeadquarters/9_현대기아트레이닝센터',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+        },
+        {
+            category: 'office',
+            isSignature: true,
+            name: '울릉도 코스모스호텔',
+            folder: 'images/5_OfficeHeadquarters/3_울릉도코스모스호텔',
+            mainImage: 'main.png',
+            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).jpeg', 'sub (3).png', 'sub (4).jpeg', 'sub (4).png', 'sub (5).jpeg', 'sub (5).png', 'sub (6).jpeg', 'sub (7).jpeg', 'sub (8).jpeg', 'sub (9).jpeg', 'sub (10).jpeg', 'sub (11).jpeg', 'sub (12).jpeg', 'sub (13).jpeg', 'sub (14).jpeg', 'sub (15).jpeg', 'sub (16).jpeg', 'sub (17).jpeg', 'sub (18).jpeg']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '전곡선사박물관',
+            folder: 'images/2_ExhibitionCultural/5_전곡선사박물관',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (1).jpg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).png', 'sub (4).png', 'sub (5).png', 'sub (6).png', 'sub (7).png']
+        },
+        {
+            category: 'office',
+            isSignature: true,
+            name: 'YG 엔터테인먼트 사옥',
+            folder: 'images/5_OfficeHeadquarters/2_YG엔터네인먼트사옥',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg', 'sub (3).jpeg']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '대상공원 맘스프리존',
+            folder: 'images/2_ExhibitionCultural/17_대상공원맘스프리존',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '여수엑스포 주제관',
+            folder: 'images/2_ExhibitionCultural/7_여수엑스포주제관',
+            mainImage: 'main.png',
+            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).jpeg', 'sub (3).png', 'sub (4).jpeg', 'sub (5).jpeg', 'sub (6).jpeg', 'sub (7).jpeg']
+        },
+        {
+            category: 'education',
+            name: '현대 천안 글로벌연수원',
+            folder: 'images/4_EducationScienceTechnology/4_현대천안글로벌연수원',
+            mainImage: 'main.jpeg',
+            subImages: ['sub.jpeg']
+        },
+        {
+            category: 'education',
+            name: '한독 제넥신 연구소',
+            folder: 'images/4_EducationScienceTechnology/5_한독제넥신연구소',
+            mainImage: 'main.jpeg',
+            subImages: ['sub.jpeg']
+        },
+        {
+            category: 'education',
+            isSignature: true,
+            name: '제주시 새활용센터',
+            folder: 'images/4_EducationScienceTechnology/6_제주시새활용센터',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png']
+        },
+        {
+            category: 'office',
+            isSignature: true,
+            name: '드레곤시티호텔 대연회장',
+            folder: 'images/5_OfficeHeadquarters/6_드레곤시티호텔대연회장',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+        },
         {
             category: 'aviation',
             isSignature: true,
@@ -108,23 +216,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mainImage: 'main.jpeg',
             subImages: ['sub.jpeg']
         },
-
-        // ─── 2. Exhibition & Cultural (전시/문화) ───
         {
             category: 'exhibition',
-            isSignature: true,
-            name: 'DDP 동대문디자인플라자',
-            folder: 'images/2_ExhibitionCultural/1_DDP',
-            mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).png', 'sub (3).jpeg', 'sub (5).jpeg', 'sub (6).jpeg', 'sub (7).jpeg', 'sub (8).jpeg', 'sub (9).jpeg', 'sub (10).jpeg', 'sub (11).jpeg', 'sub (12).jpeg', 'sub (13).jpeg']
-        },
-        {
-            category: 'exhibition',
-            isSignature: true,
-            name: '현대 고양 모터스튜디오',
-            folder: 'images/2_ExhibitionCultural/2_현대고양모터스튜디오',
-            mainImage: 'main.png',
-            subImages: ['sub (1).png', 'sub (2).png']
+            name: '여수엑스포 삼성관',
+            folder: 'images/2_ExhibitionCultural/6_여수엑스포삼성관',
+            mainImage: 'main.jpg',
+            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (3).jpeg']
         },
         {
             category: 'exhibition',
@@ -143,32 +240,39 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'exhibition',
             isSignature: true,
-            name: '전곡선사박물관',
-            folder: 'images/2_ExhibitionCultural/5_전곡선사박물관',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (1).jpg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).png', 'sub (4).png', 'sub (5).png', 'sub (6).png', 'sub (7).png']
-        },
-        {
-            category: 'exhibition',
-            name: '여수엑스포 삼성관',
-            folder: 'images/2_ExhibitionCultural/6_여수엑스포삼성관',
-            mainImage: 'main.jpg',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (3).jpeg']
-        },
-        {
-            category: 'exhibition',
-            isSignature: true,
-            name: '여수엑스포 주제관',
-            folder: 'images/2_ExhibitionCultural/7_여수엑스포주제관',
-            mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).jpeg', 'sub (3).png', 'sub (4).jpeg', 'sub (5).jpeg', 'sub (6).jpeg', 'sub (7).jpeg']
-        },
-        {
-            category: 'exhibition',
             name: '송도 컨벤션센터 2단계',
             folder: 'images/2_ExhibitionCultural/8_송도컨벤션센터2단계',
             mainImage: 'main.jpeg',
             subImages: []
+        },
+        {
+            category: 'exhibition',
+            isSignature: true,
+            name: '필리핀 아레나',
+            folder: 'images/2_ExhibitionCultural/14_필리핀아레나',
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
+        },
+        {
+            category: 'exhibition',
+            name: '국립과천과학관',
+            folder: 'images/2_ExhibitionCultural/12_국립과천과학관',
+            mainImage: 'main.jpeg',
+            subImages: []
+        },
+        {
+            category: 'exhibition',
+            name: '김대중 컨벤션센터',
+            folder: 'images/2_ExhibitionCultural/11_김대중컨벤션센터',
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+        },
+        {
+            category: 'exhibition',
+            name: '서서울 미술관',
+            folder: 'images/2_ExhibitionCultural/19_서서울미술관',
+            mainImage: 'main.png',
+            subImages: ['sub.png']
         },
         {
             category: 'exhibition',
@@ -186,20 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
-            name: '김대중 컨벤션센터',
-            folder: 'images/2_ExhibitionCultural/11_김대중컨벤션센터',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
-        },
-        {
-            category: 'exhibition',
-            name: '국립과천과학관',
-            folder: 'images/2_ExhibitionCultural/12_국립과천과학관',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-        {
-            category: 'exhibition',
             name: '대구 학생문화센터',
             folder: 'images/2_ExhibitionCultural/13_대구학생문화센터',
             mainImage: 'main.png',
@@ -207,62 +297,45 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'exhibition',
-            isSignature: true,
-            name: '필리핀 아레나',
-            folder: 'images/2_ExhibitionCultural/14_필리핀아레나',
-            mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).jpg', 'sub (1).png', 'sub (2).png']
-        },
-        {
-            category: 'exhibition',
             name: '고성 통일전망대',
             folder: 'images/2_ExhibitionCultural/15_고성통일전망대',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).png']
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
         },
         {
             category: 'exhibition',
             name: '상암 DMC 홍보관',
             folder: 'images/2_ExhibitionCultural/16_상암DMC홍보관',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-        {
-            category: 'exhibition',
-            name: '대상공원 맘스프리존',
-            folder: 'images/2_ExhibitionCultural/17_대상공원맘스프리존',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg', 'sub.png']
+            mainImage: 'main.png',
+            subImages: ['sub (1).png', 'sub (2).png']
         },
         {
             category: 'exhibition',
             name: '시흥 문화예술회관',
             folder: 'images/2_ExhibitionCultural/18_시흥문화예술회관',
             mainImage: 'main.png',
-            subImages: []
+            subImages: ['sub (1).png', 'sub (2).png']
         },
-        {
-            category: 'exhibition',
-            name: '서서울 미술관',
-            folder: 'images/2_ExhibitionCultural/19_서서울미술관',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-
-        // ─── 3. Sports (스포츠) ───
         {
             category: 'sports',
             isSignature: true,
+            name: 'KNFC',
+            folder: 'images/3_Sports/13_KNFC',
+            mainImage: 'main.jpeg',
+            subImages: []
+        },
+        {
+            category: 'sports',
             name: '잠실 체조경기장',
             folder: 'images/3_Sports/1_잠실체조경기장',
             mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg']
+            subImages: []
         },
         {
             category: 'sports',
             name: '잠실 체육관',
             folder: 'images/3_Sports/2_잠실체육관',
-            mainImage: 'main.png',
+            mainImage: 'main.jpeg',
             subImages: ['sub.jpeg']
         },
         {
@@ -270,14 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
             name: '울산 문수수영장',
             folder: 'images/3_Sports/3_울산문수수영장',
             mainImage: 'main.jpeg',
-            subImages: []
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'sports',
             name: '진주 체육관',
             folder: 'images/3_Sports/4_진주체육관',
-            mainImage: 'main.png',
-            subImages: ['sub.jpeg']
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'sports',
@@ -295,31 +368,17 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'sports',
-            name: '은평 구민체육센터',
-            folder: 'images/3_Sports/7_은평구민체육센터',
-            mainImage: 'main.png',
-            subImages: []
-        },
-        {
-            category: 'sports',
             name: '김천 실내수영장',
             folder: 'images/3_Sports/8_김천실내수영장',
-            mainImage: 'main.jpg',
-            subImages: []
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'sports',
             name: '원주시 국민체육센터',
             folder: 'images/3_Sports/9_원주시국민체육센터',
-            mainImage: 'main.png',
-            subImages: []
-        },
-        {
-            category: 'sports',
-            name: '경산 시민운동장',
-            folder: 'images/3_Sports/10_경산시민운동장',
-            mainImage: 'main.png',
-            subImages: []
+            mainImage: 'main.jpeg',
+            subImages: ['sub.jpeg']
         },
         {
             category: 'sports',
@@ -333,73 +392,42 @@ document.addEventListener('DOMContentLoaded', () => {
             name: '동대문 실내수영장',
             folder: 'images/3_Sports/12_동대문실내수영장',
             mainImage: 'main.jpeg',
-            subImages: []
+            subImages: ['sub.jpeg']
         },
         {
             category: 'sports',
-            name: 'KNFC',
-            folder: 'images/3_Sports/13_KNFC',
+            name: '은평 구민체육센터',
+            folder: 'images/3_Sports/7_은평구민체육센터',
             mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg']
+            subImages: ['sub.jpeg']
+        },
+        {
+            category: 'sports',
+            name: '경산 시민운동장',
+            folder: 'images/3_Sports/10_경산시민운동장',
+            mainImage: 'main.png',
+            subImages: []
         },
         {
             category: 'sports',
             name: '레인보우힐스 CC',
             folder: 'images/3_Sports/14_레인보우힐스CC',
-            mainImage: 'main.jpg',
-            subImages: []
+            mainImage: 'main.jpeg',
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
-
-        // ─── 4. Education & Science/Technology (교육/과학기술) ───
         {
             category: 'education',
             name: '경주 교원연수원',
             folder: 'images/4_EducationScienceTechnology/1_경주교원연수원',
             mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg', 'sub (3).jpeg', 'sub (4).jpeg', 'sub (5).jpeg']
-        },
-        {
-            category: 'education',
-            isSignature: true,
-            name: '코오롱 글로벌센터',
-            folder: 'images/4_EducationScienceTechnology/2_코오롱글로벌센터',
-            mainImage: 'main.png',
-            subImages: ['sub (1).png', 'sub (2).png', 'sub (3).png', 'sub (4).png']
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg', 'sub (3).jpeg']
         },
         {
             category: 'education',
             name: '송도 글로벌캠퍼스',
             folder: 'images/4_EducationScienceTechnology/3_송도글로벌캠퍼스',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg']
-        },
-        {
-            category: 'education',
-            name: '현대 천안 글로벌연수원',
-            folder: 'images/4_EducationScienceTechnology/4_현대천안글로벌연수원',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-        {
-            category: 'education',
-            name: '한독 제넥신 연구소',
-            folder: 'images/4_EducationScienceTechnology/5_한독제넥신연구소',
-            mainImage: 'main.jpeg',
-            subImages: ['sub.jpeg']
-        },
-        {
-            category: 'education',
-            name: '제주시 새활용센터',
-            folder: 'images/4_EducationScienceTechnology/6_제주시새활용센터',
             mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (3).jpeg', 'sub (4).jpeg']
-        },
-        {
-            category: 'education',
-            name: '남부광역 생활폐기물처리시설',
-            folder: 'images/4_EducationScienceTechnology/7_남부광역생활폐기물처리시설',
-            mainImage: 'main.jpeg',
-            subImages: []
+            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
         },
         {
             category: 'education',
@@ -408,31 +436,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mainImage: 'main.jpeg',
             subImages: ['sub.jpeg']
         },
-
-        // ─── 5. Office & Headquarters (업무/사옥) ───
         {
-            category: 'office',
-            isSignature: true,
-            name: 'LH 진주사옥',
-            folder: 'images/5_OfficeHeadquarters/1_LH진주사옥',
-            mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).png']
-        },
-        {
-            category: 'office',
-            isSignature: true,
-            name: 'YG 엔터테인먼트 사옥',
-            folder: 'images/5_OfficeHeadquarters/2_YG엔터네인먼트사옥',
+            category: 'education',
+            name: '남부광역 생활폐기물처리시설',
+            folder: 'images/4_EducationScienceTechnology/7_남부광역생활폐기물처리시설',
             mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg', 'sub (3).jpeg']
-        },
-        {
-            category: 'office',
-            isSignature: true,
-            name: '울릉도 코스모스호텔',
-            folder: 'images/5_OfficeHeadquarters/3_울릉도코스모스호텔',
-            mainImage: 'main.png',
-            subImages: ['sub (1).jpeg', 'sub (1).png', 'sub (2).jpeg', 'sub (2).png', 'sub (3).jpeg', 'sub (3).png', 'sub (4).jpeg', 'sub (4).png', 'sub (5).jpeg', 'sub (5).png', 'sub (6).jpeg', 'sub (7).jpeg', 'sub (8).jpeg', 'sub (9).jpeg', 'sub (10).jpeg', 'sub (11).jpeg', 'sub (12).jpeg', 'sub (13).jpeg', 'sub (14).jpeg', 'sub (15).jpeg', 'sub (16).jpeg', 'sub (17).jpeg', 'sub (18).jpeg']
+            subImages: []
         },
         {
             category: 'office',
@@ -450,21 +459,6 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
-            name: '드레곤시티호텔 대연회장',
-            folder: 'images/5_OfficeHeadquarters/6_드레곤시티호텔대연회장',
-            mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
-        },
-        {
-            category: 'office',
-            name: '광명동굴 VR체험센터',
-            folder: 'images/5_OfficeHeadquarters/7_광명동굴VR체험센터',
-            mainImage: 'main.jpeg',
-            subImages: []
-        },
-        {
-            category: 'office',
-            isSignature: true,
             name: 'NAVER 세종각',
             folder: 'images/5_OfficeHeadquarters/8_NAVER세종각',
             mainImage: 'main.png',
@@ -472,10 +466,10 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             category: 'office',
-            name: '현대기아 트레이닝센터',
-            folder: 'images/5_OfficeHeadquarters/9_현대기아트레이닝센터',
+            name: '광명동굴 VR체험센터',
+            folder: 'images/5_OfficeHeadquarters/7_광명동굴VR체험센터',
             mainImage: 'main.jpeg',
-            subImages: ['sub (1).jpeg', 'sub (2).jpeg']
+            subImages: []
         },
         {
             category: 'office',
