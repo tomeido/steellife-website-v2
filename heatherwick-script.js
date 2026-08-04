@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: '대상공원 맘스프리존',
             folder: 'images/2_ExhibitionCultural/17_대상공원맘스프리존',
             mainImage: 'main.jpeg',
-            subImages: ['sub (1).png', 'sub (2).png']
+            subImages: ['sub.jpeg', 'sub.png']
         },
         {
             category: 'sports',
@@ -1099,7 +1099,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'videos/company/ddp/Designer_modifying_3D_building_mesh_202608041045.mp4'
         ],
         hyundai: [
-            'videos/company/hyundai/Designer_working_on_3D_model_202608041215.mp4'
+            'videos/company/hyundai/Korean_designer_working_3D_model_202608041310.mp4'
         ],
         lh: [
             'videos/company/lh/Designer_rotating_3D_tower_model_202608041220.mp4'
@@ -1432,6 +1432,181 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         lastScroll = currentScroll;
+    });
+
+    // =====================================================
+    // COMPANY METHOD SUBPAGE & LIGHTBOX GALLERY LOGIC
+    // =====================================================
+    const methodSlides = [
+        { src: 'method/imgi_46_img0101.jpg', title: 'MPF & MPSF - 3차원 비정형 곡면 성형 개요 (DDP)', cat: 'mpf' },
+        { src: 'method/imgi_46_img0201.jpg', title: 'MPF & MPSF - BIM 데이터 입력 및 3D 템플릿', cat: 'mpf' },
+        { src: 'method/imgi_46_img0301.jpg', title: 'MPF & MPSF - 곡면 패널 좌표 분석 프로세스', cat: 'mpf' },
+        { src: 'method/imgi_46_img0401.jpg', title: 'MPF & MPSF - 패널 도면 2D/3D 자동 변환', cat: 'mpf' },
+        { src: 'method/imgi_46_img0501.jpg', title: 'MPF & MPSF - DXF/CGR 데이터 컨버팅', cat: 'mpf' },
+        { src: 'method/imgi_46_img0601.jpg', title: 'MPF & MPSF - 성형 라인 수치 제어 데이터', cat: 'mpf' },
+        { src: 'method/imgi_46_img0701.jpg', title: 'MPF & MPSF - 곡률 반경 시뮬레이션', cat: 'mpf' },
+        { src: 'method/imgi_46_img0801.jpg', title: 'MPF & MPSF - MPSF 특수 성형기 작동 매커니즘', cat: 'mpf' },
+        { src: 'method/imgi_46_img0901.jpg', title: 'MPF & MPSF - 3차원 Laser 절단 및 3D Scanner 인식', cat: 'mpf' },
+        { src: 'method/imgi_46_img1001.jpg', title: 'MPF & MPSF - 알루미늄 비정형 패널 제작 현장', cat: 'mpf' },
+        { src: 'method/imgi_46_img1101.jpg', title: 'MPF & MPSF - 패널 정밀 가공 및 품질 검사', cat: 'mpf' },
+        { src: 'method/imgi_46_img1201.jpg', title: 'MPF & MPSF - 곡면 패널 조립 시뮬레이션', cat: 'mpf' },
+        { src: 'method/imgi_46_img1301.jpg', title: 'MPF & MPSF - DDP 현장 비정형 패널 설치', cat: 'mpf' },
+        { src: 'method/imgi_46_img1401.jpg', title: 'MPF & MPSF - 패널 접합부 및 프레임 상세', cat: 'mpf' },
+        { src: 'method/imgi_47_img0202.jpg', title: 'FLATDECK SYSTEM - 고강도 무퍼린 덱 (누리마루 APEC)', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0302.jpg', title: 'FLATDECK SYSTEM - 단면 구조 및 흡음/단열 메커니즘', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0402.jpg', title: 'FLATDECK SYSTEM - 구조 계산 및 스판 검토서', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0502.jpg', title: 'FLATDECK SYSTEM - 최대 6M 장스판 시공 현장', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0602.jpg', title: 'FLATDECK SYSTEM - 결로/누수 방지 하수 시스템', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0702.jpg', title: 'FLATDECK SYSTEM - Roof Deck 접합 조인트 상세', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0802.jpg', title: 'FLATDECK SYSTEM - 하부 천정재 생략 시공 상세', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img0902.jpg', title: 'FLATDECK SYSTEM - 차음 및 결로방지 성능 시험', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img1002.jpg', title: 'FLATDECK SYSTEM - 덱 패널 하중 테스트', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img1102.jpg', title: 'FLATDECK SYSTEM - 지붕 시공 자동 롤포밍 현장', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img1202.jpg', title: 'FLATDECK SYSTEM - 패널 고정 클립 및 볼트 부착', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img1302.jpg', title: 'FLATDECK SYSTEM - 완성 지붕 전경 (누리마루)', cat: 'flatdeck' },
+        { src: 'method/imgi_47_img1402.jpg', title: 'FLATDECK SYSTEM - 지붕 단열재 및 덱 마감', cat: 'flatdeck' },
+        { src: 'method/imgi_48_img0103.jpg', title: 'B.I.M - Building Information Modeling 개념도', cat: 'bim' },
+        { src: 'method/imgi_48_img1003.jpg', title: 'B.I.M - 3D 파라메트릭 골조 및 외장 동기화', cat: 'bim' },
+        { src: 'method/imgi_48_img1103.jpg', title: 'B.I.M - 패널 간섭 체크 및 4D 시공 스케줄링', cat: 'bim' },
+        { src: 'method/imgi_48_img1403.jpg', title: 'B.I.M - 부재별 3D 객체 정보 관리 시스템', cat: 'bim' },
+        { src: 'method/imgi_49_img0104.jpg', title: 'Cladding & Steel Form Work - AL/SUS Cladding 사례', cat: 'bim' },
+        { src: 'method/imgi_50_img0105.jpg', title: 'Serviceable Design Tool - Digital Project & Rhino 4.0', cat: 'tools' },
+        { src: 'method/imgi_51_img0106.jpg', title: '시공사례 - 동대문 디자인 플라자 (DDP)', cat: 'cases' },
+        { src: 'method/imgi_52_img0107.jpg', title: '시공사례 - 전곡선사박물관', cat: 'cases' },
+        { src: 'method/imgi_53_img0108.jpg', title: '시공사례 - 여수엑스포 주제관', cat: 'cases' },
+        { src: 'method/imgi_54_img0109.jpg', title: '시공사례 - 여수엑스포 삼성관', cat: 'cases' },
+        { src: 'method/imgi_55_img0110.jpg', title: '시공사례 - 송도 글로벌 캠퍼스 강당동', cat: 'cases' }
+    ];
+
+    let currentMethodSlideIdx = 0;
+
+    const methodModal = document.getElementById('methodModal');
+    const methodModalTitle = document.getElementById('methodModalTitle');
+    const methodModalCounter = document.getElementById('methodModalCounter');
+    const methodModalImg = document.getElementById('methodModalImg');
+    const closeMethodModalBtn = document.getElementById('closeMethodModalBtn');
+    const prevMethodSlideBtn = document.getElementById('prevMethodSlideBtn');
+    const nextMethodSlideBtn = document.getElementById('nextMethodSlideBtn');
+    const methodSlideScrubber = document.getElementById('methodSlideScrubber');
+    const methodThumbsStrip = document.getElementById('methodThumbsStrip');
+    const openMethodGalleryBtn = document.getElementById('openMethodGalleryBtn');
+
+    function updateMethodModalSlide(idx) {
+        if (idx < 0) idx = methodSlides.length - 1;
+        if (idx >= methodSlides.length) idx = 0;
+        currentMethodSlideIdx = idx;
+
+        const slide = methodSlides[currentMethodSlideIdx];
+        if (methodModalImg) methodModalImg.src = slide.src;
+        if (methodModalTitle) methodModalTitle.textContent = slide.title;
+        if (methodModalCounter) methodModalCounter.textContent = `${currentMethodSlideIdx + 1} / ${methodSlides.length}`;
+        if (methodSlideScrubber) {
+            methodSlideScrubber.max = methodSlides.length;
+            methodSlideScrubber.value = currentMethodSlideIdx + 1;
+        }
+
+        if (methodThumbsStrip) {
+            const thumbs = methodThumbsStrip.querySelectorAll('.hw-modal-thumb');
+            thumbs.forEach((t, i) => {
+                if (i === currentMethodSlideIdx) {
+                    t.classList.add('active');
+                    t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    t.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    function openMethodModalIndex(idx) {
+        if (!methodModal) return;
+        if (methodThumbsStrip && methodThumbsStrip.children.length === 0) {
+            methodSlides.forEach((slide, i) => {
+                const div = document.createElement('div');
+                div.className = 'hw-modal-thumb';
+                div.innerHTML = `<img src="${slide.src}" alt="Thumb ${i+1}">`;
+                div.onclick = () => updateMethodModalSlide(i);
+                methodThumbsStrip.appendChild(div);
+            });
+        }
+        updateMethodModalSlide(idx);
+        methodModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    window.openMethodModalByPath = function(path, customTitle) {
+        const foundIdx = methodSlides.findIndex(s => s.src === path);
+        if (foundIdx !== -1) {
+            openMethodModalIndex(foundIdx);
+        } else {
+            openMethodModalIndex(0);
+            if (methodModalImg) methodModalImg.src = path;
+            if (methodModalTitle && customTitle) methodModalTitle.textContent = customTitle;
+        }
+    };
+
+    function closeMethodModal() {
+        if (!methodModal) return;
+        methodModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    if (openMethodGalleryBtn) {
+        openMethodGalleryBtn.addEventListener('click', () => openMethodModalIndex(0));
+    }
+    if (closeMethodModalBtn) {
+        closeMethodModalBtn.addEventListener('click', closeMethodModal);
+    }
+    if (prevMethodSlideBtn) {
+        prevMethodSlideBtn.addEventListener('click', () => updateMethodModalSlide(currentMethodSlideIdx - 1));
+    }
+    if (nextMethodSlideBtn) {
+        nextMethodSlideBtn.addEventListener('click', () => updateMethodModalSlide(currentMethodSlideIdx + 1));
+    }
+    if (methodSlideScrubber) {
+        methodSlideScrubber.addEventListener('input', (e) => updateMethodModalSlide(parseInt(e.target.value) - 1));
+    }
+
+    if (methodModal) {
+        methodModal.addEventListener('click', (e) => {
+            if (e.target === methodModal) closeMethodModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (!methodModal || methodModal.classList.contains('hidden')) return;
+        if (e.key === 'ArrowLeft') updateMethodModalSlide(currentMethodSlideIdx - 1);
+        if (e.key === 'ArrowRight') updateMethodModalSlide(currentMethodSlideIdx + 1);
+        if (e.key === 'Escape') closeMethodModal();
+    });
+
+    // Method Subpage Category Filtering Logic
+    document.querySelectorAll('.hw-method-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.dataset.methodFilter;
+            document.querySelectorAll('.hw-method-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.hw-method-card');
+            const casesWrapper = document.querySelector('.hw-method-cases-wrapper');
+
+            cards.forEach(card => {
+                const cat = card.dataset.methodCat;
+                if (filter === 'all' || filter === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (casesWrapper) {
+                if (filter === 'all' || filter === 'cases') {
+                    casesWrapper.style.display = 'block';
+                } else {
+                    casesWrapper.style.display = 'none';
+                }
+            }
+        });
     });
 
     // =====================================================
