@@ -902,7 +902,8 @@ body.reorder-mode-active .signature-toggle-btn {
 .studio-section {
     display: none;
     min-height: 100vh;
-    padding: 6rem 2rem 6rem;
+    padding: 8rem 2rem 6rem;
+    scroll-margin-top: 80px;
     background: #111317;
     color: #ffffff;
 }
@@ -918,9 +919,14 @@ body.reorder-mode-active .signature-toggle-btn {
 
 /* Heatherwick Sub-navigation Bar */
 .hw-subnav-bar {
-    margin-bottom: 4rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    background: #111317;
+    padding-top: 1rem;
     padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .hw-subnav-list {
@@ -2343,7 +2349,7 @@ body.reorder-mode-active .custom-cursor {
 /* Method Cards Grid */
 .hw-method-cards-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 2.5rem;
     margin-bottom: 5rem;
 }
