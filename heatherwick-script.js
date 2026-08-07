@@ -1439,6 +1439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================================================
     const methodSlides = [
         { src: 'method/imgi_46_img0101.jpg', title: 'MPF & MPSF - 3차원 비정형 곡면 성형 개요 (DDP)', cat: 'mpf' },
+        { src: 'method/img0102.jpg', title: 'MPF & MPSF - 3차원 비정형 패널 성형 공정 및 상세', cat: 'mpf' },
         { src: 'method/imgi_46_img0201.jpg', title: 'MPF & MPSF - BIM 데이터 입력 및 3D 템플릿', cat: 'mpf' },
         { src: 'method/imgi_46_img0301.jpg', title: 'MPF & MPSF - 곡면 패널 좌표 분석 프로세스', cat: 'mpf' },
         { src: 'method/imgi_46_img0401.jpg', title: 'MPF & MPSF - 패널 도면 2D/3D 자동 변환', cat: 'mpf' },
